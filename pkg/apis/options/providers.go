@@ -126,6 +126,9 @@ const (
 	// NextCloudProvider is the provider type for NextCloud
 	NextCloudProvider ProviderType = "nextcloud"
 
+	// JIRAProvider is the provider type for JIRA
+	JIRAProvider ProviderType = "jira"
+
 	// OIDCProvider is the provider type for OIDC
 	OIDCProvider ProviderType = "oidc"
 )
