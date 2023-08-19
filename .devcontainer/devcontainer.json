@@ -3,9 +3,16 @@
   "context": "..",
   "dockerFile": "./Dockerfile",
   "postCreateCommand": "pre-commit install && go mod download",
-  "containerEnv": { "DEVCONTAINER": "1" },
-  "appPort": ["4180:4180"],
-  "runArgs": ["-e", "GIT_EDITOR=code --wait"],
+  "containerEnv": {
+    "DEVCONTAINER": "1"
+  },
+  "appPort": [
+    "4180:4180"
+  ],
+  "runArgs": [
+    "-e",
+    "GIT_EDITOR=code --wait"
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
@@ -31,6 +38,10 @@
         ]
       }
     }
+  },
+  "remoteEnv": {
+    "DOCKER_BUILD_PLATFORM": "linux/amd64",
+    "REGISTRY": "pure-artifactory.dev.purestorage.com/fa-tools"
   },
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker": {},
