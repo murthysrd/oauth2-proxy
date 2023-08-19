@@ -90,12 +90,6 @@ func (p *JIRAProvider) EnrichSession(ctx context.Context, s *sessions.SessionSta
 		return err
 	}
 
-	email, err := json.Get("emailAddress").String()
-	if err != nil {
-		return fmt.Errorf("unable to extract email from userinfo endpoint: %v", err)
-	}
-	s.Email = email
-
 	for _, group := range json.Get("groups").Get("items").MustArray() {
 		groupMap, ok := group.(map[string]interface{})
 		if ok {
@@ -106,6 +100,12 @@ func (p *JIRAProvider) EnrichSession(ctx context.Context, s *sessions.SessionSta
 			}
 		}
 	}
+
+	email, err := json.Get("emailAddress").String()
+	if err != nil {
+		return fmt.Errorf("unable to extract email from userinfo endpoint: %v", err)
+	}
+	s.Email = email
 
 	preferredUsername, err := json.Get("name").String()
 	if err == nil {
